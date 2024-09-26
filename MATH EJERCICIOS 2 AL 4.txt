@@ -1,0 +1,55 @@
+MATH EJERCICIOS 2 AL 4
+
+import java.util.Scanner;
+
+public class MetodosMath {
+
+    public static void main(String[] args) {
+        /*
+        Calcular el area de un cuadrado ej 2
+         */
+
+        int lado, area;
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Ingresa el lado del cuadrado: ");
+        lado = sc.nextInt();
+        
+        area = lado * lado;
+        
+        System.out.println("El area del cuadrado es: " + area );
+        
+        /* Calcular el area de un circulo ej 3 */
+        
+        
+        double radio, areaCirc;
+        
+        System.out.println("Introduce el radio usnado entero o numero con coma: ");
+        radio = sc.nextDouble();
+        
+        
+        areaCirc = Math.PI*Math.pow(radio, 2);
+        System.out.println("El area de un circulo es: " + areaCirc);
+        
+        //TABLAS DE MULTILICAR ej 4
+        
+        double numero, resultado, res;
+        
+        System.out.println("Introduce un numero para ver su tabla: ");
+        numero = sc.nextInt();
+        
+        for (int i = 1; i <= 10; i++) {
+            resultado = numero * i;
+            System.out.println(numero + " X " + i + " es: " + resultado );
+        }
+        //Teniendo en cuenta el EJERCICIO 4 , escribir un código que muestre las
+        // potencias cuadradas comenzando por 2 hasta 10.
+        
+        for (int i = 2; i <= 10; i++) {
+            res = Math.pow(numero,i);
+            System.out.println("Las potencias cuadradas son: " + res);
+        }
+        
+        
+    }
+}

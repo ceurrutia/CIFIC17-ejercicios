@@ -1,0 +1,25 @@
+EJERCICIO 10
+
+import java.util.Scanner;
+
+public class Ejercicio10 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //introducir edad y  verificar si puede votar
+        int edad;
+
+        System.out.println("Ingresa su edad: ");
+        edad = sc.nextInt();
+
+        System.out.println("La edad ingresada es: " + edad);
+
+        if (edad >= 18 && edad <= 69) {
+            System.out.println("Puede votar");
+        } else if (edad >= 70) {
+            System.out.println("Esta exceptuado de votar");
+        } else {
+            System.out.println("No puede votar");
+        }
+    }
+}

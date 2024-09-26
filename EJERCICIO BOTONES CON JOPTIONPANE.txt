@@ -1,0 +1,33 @@
+
+
+import javax.swing.JOptionPane;
+
+public class EjercicioBotonesJOPane {
+
+    public static void main(String[] args) {
+
+        int mailOption = JOptionPane.showConfirmDialog(null,
+                "Quieres que te enviemos un mail? ", "Confirmacion de email ",
+                JOptionPane.YES_NO_CANCEL_OPTION);
+
+        if (mailOption == JOptionPane.YES_OPTION) {
+            String email = JOptionPane.showInputDialog(null, "Escribe tu mail");
+            JOptionPane.showConfirmDialog(null, "Has recibido un mail en tu casilla");
+            
+            if (email != null && !email.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Enviado");
+            } else {
+                JOptionPane.showMessageDialog(null, "Adios");
+            }
+            
+        } else if (mailOption == JOptionPane.NO_OPTION) {
+
+            JOptionPane.showMessageDialog(null, "Gracias por tu respuesta");
+        } else if (mailOption == JOptionPane.CANCEL_OPTION) {
+            JOptionPane.showMessageDialog(null, "Operacion cancelada");
+        } else if (mailOption == JOptionPane.CLOSED_OPTION) {
+            JOptionPane.showMessageDialog(null, "Cuadro de dialogo cerrado");
+        }
+
+    }
+}

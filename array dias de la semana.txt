@@ -1,0 +1,28 @@
+EJERCICIO DIAS DE LA SEMANA
+
+package inicioarrayscific;
+
+import java.util.Scanner;
+
+public class InicioArraysCific {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        //mostrar los dias de la semana usando un array
+
+        String[] dias = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "sabado", "Domingo"};
+
+        System.out.println("Ingrese el numero de dia de la semana: ");
+        int opcion = sc.nextInt();
+
+        if (opcion < dias.length) {
+            System.out.println(dias[opcion - 1]);
+            System.out.println("El dia elegido es: " + dias[opcion - 1]);
+        } else {
+            System.out.println("Opcion invalida");
+        }
+
+    }
+
+}

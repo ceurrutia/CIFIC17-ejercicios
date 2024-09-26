@@ -1,0 +1,26 @@
+EJERCICIO 7/8
+
+package ejercicio7.pkg8;
+
+import java.util.Scanner;
+
+public class Ejercicio78 {
+
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        double precio, precio_iva, iva = 0.21;
+        
+        System.out.println("----------Informacion del precio----------- ");
+        
+        System.out.println("Introduzca precio: ");
+        precio = sc.nextDouble();
+        System.out.println("El precio ingresado es: " + precio);
+        
+        precio_iva = (precio * iva) + precio;
+        System.out.println("El precio final a pagar con iva es: " + precio_iva);
+        
+    }
+    
+}

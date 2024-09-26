@@ -1,0 +1,23 @@
+ARRAYS 1
+
+package inicioarrayscific;
+
+public class InicioArraysCific {
+
+    public static void main(String[] args) {
+        int[] vector = new int[5];
+        
+        vector[0] = 25;
+        vector[1] = 12;
+        vector[2] = 980;
+        vector[3] = 77;
+        vector[4] = 6;
+        
+        System.out.println("El numero ingresado es: " + vector[0] );
+        System.out.println("El numero ingresado es: " + vector[1] );
+        System.out.println("El numero ingresado es: " + vector[2] );
+        System.out.println("El numero ingresado es: " + vector[3] );
+        System.out.println("El numero ingresado es: " + vector[4] );
+    }
+    
+}

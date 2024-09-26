@@ -1,0 +1,26 @@
+EJERCICIO 5
+
+
+import java.util.Random;
+import javax.swing.JOptionPane;
+
+public class OtionPaneClase1 {
+
+    public static void main(String[] args) {
+
+ String colors[] = {"Amarillo", "azul", "Verde"};
+        Random random = new Random();
+
+        int posicionesRandom = random.nextInt(colors.length);
+        String colorSeleccionado = colors[posicionesRandom];
+        
+        String respuestaUsuario = JOptionPane.showInputDialog(null, "Adivine el color: ");
+        System.out.println(respuestaUsuario);
+        
+        if (respuestaUsuario != null && respuestaUsuario.equalsIgnoreCase(colorSeleccionado)){
+            JOptionPane.showMessageDialog(null, "Adivinaste, el color es: " + colorSeleccionado);
+        } else {
+            JOptionPane.showMessageDialog(null, "Erraste, " + " el color era: " + colorSeleccionado);
+        }
+}
+}

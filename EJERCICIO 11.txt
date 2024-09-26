@@ -1,0 +1,33 @@
+EJERCICIO 11
+
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class Ejercicio78 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //introducir una nota y  verificar si ha aprobado o no
+
+        try {
+            int nota;
+
+            System.out.println("Ingresa nota del 1 al 10: ");
+            nota = sc.nextInt();
+
+            System.out.println("La nota ingresada es: " + nota);
+
+            if (nota >= 6 && nota <= 10) {
+                System.out.println("Aprobado");
+            } else if (nota >= 4 && nota <= 5) {
+                System.out.println("Rinde diciembre");
+            } else {
+                System.out.println("Rinde marzo");
+            } 
+        } catch (InputMismatchException e) {
+            System.out.println("Dato no valido, debe ser un numero del 1 al 10");
+        } finally {
+            sc.close();
+        }
+    }
+}

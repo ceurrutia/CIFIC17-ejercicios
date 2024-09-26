@@ -1,0 +1,115 @@
+package factorizar;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.InputMismatchException;
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+
+public class Factorizar {
+
+    public static int fact(int num) {
+        if (num == 0 || num == 1) {
+            return 1;
+        } else {
+            int resultado = 1;
+            for (int i = 1; i <= num; i++) {
+                resultado *= i;
+            }
+            System.out.println("El factorial de: " + num + " es: " + resultado);
+            return resultado;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int num;
+
+        System.out.println("Ingrese un numero para saber su factor: ");
+        num = sc.nextInt();
+
+        //llamada a funcion factorizar
+        fact(num);
+
+        //operador ternario para saber si es mayor o menor
+        String esMayor;
+        int a, b;
+
+        try {
+            System.out.println("Ingresa un numero: ");
+            a = sc.nextInt();
+
+            System.out.println("Ingresa otro numero: ");
+            b = sc.nextInt();
+
+            esMayor = a > b ? "El numero " + a + " es Mayor" : "El numero " + a + " es menor";
+            System.out.println(esMayor);
+        } catch (InputMismatchException e) {
+            System.out.println("Debes ingresar un numero entero. Programa finalizado");
+        } finally {
+            sc.close();
+        }
+
+        //usar metodo reverse con StringBuilder
+        //String palabra = "Java";
+        //StringBuilder sb = new StringBuilder(palabra);
+        //sb.reverse();
+        //System.out.println("La palabra invertida es: " + sb.toString());
+        //verificar si una palabra es palindromo o no
+        String palabra = "Cecilia";
+        StringBuilder sb = new StringBuilder(palabra);
+
+        sb.reverse();
+
+        if (palabra.equalsIgnoreCase(sb.toString())) {
+            System.out.println(palabra + " Es palindromo");
+        } else {
+            System.out.println(palabra + " No es palindromo");
+        }
+        System.out.println("La palabra al reves es: " + sb.toString());
+
+        // ahora con numeros 
+        //hay que convertirlo con valueOf
+        int numero = 657005;
+        StringBuilder stb = new StringBuilder(String.valueOf(numero));
+
+        stb.reverse();
+        System.out.println("El numero invertido es: " + stb.toString());
+
+        //es palindromo
+        String miPalabraSecreta = "la palabra secreta";
+        StringBuilder stbr = new StringBuilder(miPalabraSecreta);
+
+        stbr.reverse();
+
+        System.out.println("La palabra al reves es: " + stbr.toString());
+
+        ArrayList<Integer> listaArray2 = new ArrayList<>();
+
+        listaArray2.add(1);
+        listaArray2.add(2);
+        listaArray2.add(3);
+        listaArray2.add(1);
+        listaArray2.add(5);
+        listaArray2.add(97);
+
+//muestro el orden en el que están en la lista
+        System.out.println("Asi esta ordenada la lista: " + listaArray2);
+
+//uso LinkedHashSet para eliminar duplicados manteniendo el orden original
+        HashSet<Integer> setLinkedHash = new LinkedHashSet<>(listaArray2);
+
+//muestro como quedo el orden
+        System.out.println("Asi queda ordenado el set: " + setLinkedHash);
+
+//vuelvo a pasarlo a arrayList
+        ArrayList<Integer> listaConLinkedHashSet = new ArrayList<>(setLinkedHash);
+
+//muestro de vuelta el orden
+        System.out.println("Lista de vuelta: " + listaConLinkedHashSet);
+        
+
+    }
+
+}

@@ -1,0 +1,48 @@
+//CONVERSIONES
+
+package conversiones;
+
+public class Conversiones {
+
+    public static void main(String[] args) {
+        
+                //Tecnica de casteo: cambiar un tipo de dato a otro, datos primitivos
+
+        Double num = 1.55;
+        //pasar a entero
+
+        int numInt = (int) num.doubleValue();
+        // casteo a long
+
+        long numLong = (long) num.longValue();
+
+        System.out.println("Numero Double base: " + num);
+        System.out.println("De double a entero: " + numInt);
+        System.out.println("De double a long: " + numLong);
+        
+        //casteo de Sring con parse a entero or double
+
+        String cantidad = "4";
+        String precio = "300.45";
+
+        int cantEntero = Integer.parseInt(cantidad);
+        double preciodoub = Double.parseDouble(precio);
+
+        System.out.println("Numero en string: " + cantEntero);
+        System.out.println("De string a double: " + preciodoub);
+        System.out.println("El valor de la compra es: " + (preciodoub * cantEntero));
+        
+        //Casteo de string a entero usamos valueof()
+        
+        int edad = 45;
+        double estatura = 1.65;
+        
+        String edadString = String.valueOf(edad);
+        String esaturaString = String.valueOf(estatura);
+        
+        // se muestra el entero
+        
+        System.out.println("Su edad es: " + edadString + " y su estatura es: " + esaturaString);
+    }
+
+}

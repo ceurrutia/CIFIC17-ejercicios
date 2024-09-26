@@ -1,0 +1,29 @@
+package otionpaneclase1;
+
+public class OtionPaneClase1 {
+
+import javax.swing.JOptionPane;
+
+    public static void main(String[] args) {
+
+//Ingresar dos numeros enteros y sumarlos, mostralos en el JOptionPane
+        
+        int num1 = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa un numero: "));
+        int num2 = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa otro numero: "));
+        int suma = num1 + num2;
+        JOptionPane.showMessageDialog(null, "El resultado de " + num1 + " + "+ num2 + " es: " + suma);
+
+//Lo mismo pero dividiendo, manejo opción de division por 0
+
+int num1 = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa un numero: "));
+        int num2 = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa otro numero: "));
+        
+        if (num2 == 0){
+            JOptionPane.showMessageDialog(null, "No se divide por 0");
+        } else {
+            double division = num1 / num2;
+            JOptionPane.showMessageDialog(null, "El resultado de " + num1 + " / "+ num2 + " es: " + division);
+        }
+
+	}
+}

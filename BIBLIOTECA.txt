@@ -1,0 +1,370 @@
+package com.mycompany.biblioteca;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+public class Biblioteca {
+
+    public static void main(String[] args) {
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        
+        listaUsuarios.add(new Usuario(1, "Pedro", "sanchez", "345618", "mimail@gmail.com "));
+        listaUsuarios.add(new Usuario(1, "Juan", "lopez", "345618", "juan@gmail.com "));
+        
+        for (Usuario us : listaUsuarios){
+            System.out.println(us);
+        }
+        
+        ArrayList<Libro> listaLibros = new ArrayList<>();
+        
+        listaLibros.add(new Libro(1, "Harry Potter y la piedra Filosofal", "JK Rowling", "2010", "Aventuras", true, 8));
+        listaLibros.add(new Libro(2, "Tiburon", "Ron Howard", "1979", "Drama", true, 5));
+        
+        for (Libro lib : listaLibros){
+            System.out.println(lib);
+        }
+        
+        
+        Bibliotecario bibliotecario = new Bibliotecario(1, "juan", "Lopez", "8765", "mail@mail.com" );
+
+        Prestamo prestamo = new Prestamo(1, LocalDateTime.now(), LocalDateTime.now().plusDays(7));
+        prestamo.realizarPrestamo(listaLibros.get(0));
+        
+        
+    }
+}
+
+
+//Libro
+
+
+package com.mycompany.biblioteca;
+
+public class Libro {
+    private int id;
+    private String titulo, autor;
+    private String anio_publicado;
+    private String categoria;
+    private boolean disponible;
+    private int cant_ejemplares;
+
+    public Libro() {
+    }
+    
+
+    public Libro(int id, String titulo, String autor, String anio_publicado, String categoria, boolean disponible, int cant_ejemplares) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anio_publicado = anio_publicado;
+        this.categoria = categoria;
+        this.disponible = disponible;
+        this.cant_ejemplares = cant_ejemplares;
+    }
+
+    public void prestarLibro(){
+        System.out.println("El libro " + titulo + " " + autor  + " esta siendo prestado");
+    }
+    
+    public void devolverLibro(){
+        System.out.println("El libro " + titulo + " " + autor + " esta siendo devuelto");
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getAnio_publicado() {
+        return anio_publicado;
+    }
+
+    public void setAnio_publicado(String anio_publicado) {
+        this.anio_publicado = anio_publicado;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    public int getCant_ejemplares() {
+        return cant_ejemplares;
+    }
+
+    public void setCant_ejemplares(int cant_ejemplares) {
+        this.cant_ejemplares = cant_ejemplares;
+    }
+
+    @Override
+    public String toString() {
+        return "Libro: " + 
+                "id: " + id + 
+                " Titulo: " + titulo + 
+                " autor: " + autor + 
+                " anio_publicado: " + anio_publicado + 
+                " categoria: " + categoria + 
+                " disponible: " + disponible + 
+                " cant_ejemplares: " + cant_ejemplares;
+    }
+}
+
+//PERSONA
+
+package com.mycompany.biblioteca;
+
+public class Persona {
+    private String nombre, apellido, telefono, mail;
+
+    public Persona() {
+    }
+
+    public Persona(String nombre, String apellido, String telefono, String mail) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.mail = mail;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona" + "nombre: " + nombre + 
+                " apellido: " + apellido + 
+                " telefono: " + telefono + 
+                " mail: " + mail;
+    }
+    
+    
+}
+
+//USUARIO
+
+package com.mycompany.biblioteca;
+
+public class Usuario extends Persona{
+    private int id;
+
+    public Usuario() {
+    }
+
+    public Usuario(int id) {
+        this.id = id;
+    }
+
+    public Usuario(int id, String nombre, String apellido, String telefono, String mail) {
+        super(nombre, apellido, telefono, mail);
+        this.id = id;
+    }
+    
+    //Metodos personalizados
+    
+    public void registroUsuario(){
+        System.out.println("El usuario " + this.getNombre() + " " + this.getApellido()+ " se esta registrando");
+    }
+    
+    public void pedirLibro(){
+        System.out.println(" Usuario " + id + " esta pidiendo un libro");
+    }
+    
+    public void devolverLibro(){
+        System.out.println(" Usaurio " + id + " esta devolviendo un libro");
+    }
+    
+    //Getters y setters
+    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario: " + "id: " + id + " nombre: " + this.getNombre() + " " + this.getApellido();
+    }
+    
+    
+    
+}
+
+//BIBLIOTECARIO
+
+package com.mycompany.biblioteca;
+
+public class Bibliotecario extends Persona{
+    int id;
+    
+
+    public Bibliotecario() {
+    }
+
+    public Bibliotecario(int id) {
+        this.id = id;
+    }
+
+    public Bibliotecario(int id, String nombre, String apellido, String telefono, String mail) {
+        super(nombre, apellido, telefono, mail);
+        this.id = id;
+    }
+    
+    
+    //Metodos
+    
+    public void AgregarLibro(Libro libro){
+        System.out.println("Bibiotecario: " + id + " Apellido: " + this.getApellido() +  " esta agregando  el libro "
+        + libro.getTitulo() + " " + " Autor: " + libro.getAutor());
+        
+    }
+    
+    public void EliminarLibro(){
+        System.out.println("Bibiotecario: " + id + " " + this.getApellido() + " esta eliminando un libro");
+    }
+    
+    //Getters y setters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
+}
+
+
+//PRESTAMO
+
+package com.mycompany.biblioteca;
+
+import java.time.LocalDateTime;
+
+
+public class Prestamo {
+
+    private int id;
+    private LocalDateTime fecha_prestamo;
+    private LocalDateTime fecha_devolucion;
+
+    public Prestamo() {
+    }
+
+    public Prestamo(int id, LocalDateTime fecha_prestamo, LocalDateTime fecha_devolucion) {
+        this.id = id;
+        this.fecha_prestamo = fecha_prestamo;
+        this.fecha_devolucion = fecha_devolucion;
+
+    }
+
+    //metodos propios
+    public void realizarPrestamo(Libro libro) {
+        System.out.println("El libro: " + libro.getId() + " " + libro.getTitulo() + " ha sido prestado " +
+                " el dia: " + fecha_prestamo);
+    }
+
+    public void restarUnEjemplar(Libro libro) {
+        libro.setCant_ejemplares(libro.getCant_ejemplares() - 1);
+    }
+
+    public void realizarDevolucion(Libro libro) {
+        System.out.println("El libro: " + libro.getId() + " " + libro.getTitulo() + " ha sido devuelto " +
+                " en la fecha: " + fecha_devolucion);
+    }
+
+    public void agregarUnEjemplar(Libro libro) {
+        libro.setCant_ejemplares(libro.getCant_ejemplares() + 1);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getFecha_prestamo() {
+        return fecha_prestamo;
+    }
+
+    public void setFecha_prestamo(LocalDateTime fecha_prestamo) {
+        this.fecha_prestamo = fecha_prestamo;
+    }
+
+    public LocalDateTime getFecha_devolucion() {
+        return fecha_devolucion;
+    }
+
+    public void setFecha_devolucion(LocalDateTime fecha_devolucion) {
+        this.fecha_devolucion = fecha_devolucion;
+    }
+
+    
+}
+

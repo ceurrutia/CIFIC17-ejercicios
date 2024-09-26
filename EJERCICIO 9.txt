@@ -1,0 +1,26 @@
+EJERCICIO 9
+
+import java.util.Scanner;
+
+public class Ejercicio9 {
+
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        //comparar un valor con 100
+        
+        int num;
+        String esMayor;
+        
+        System.out.println("Ingresa un numero: ");
+        num = sc.nextInt();
+        
+        System.out.println("El numero ingresado es: " + num);
+        
+        esMayor = num > 100 ? "El numero ingresado es mayor a 100" : "El numero ingresado es menor a 100";
+        
+        System.out.println(esMayor);
+    }
+    
+}

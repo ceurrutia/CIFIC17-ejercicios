@@ -1,0 +1,40 @@
+EJERCICIO 12
+
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class Ejercicio78 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //introducir una nota y  verificar si ha aprobado o no
+
+        try {
+            double precio_unitario, precio_total, descuento;
+            int cantidad;
+
+            System.out.println("Ingresa precio unitario del producto: ");
+            precio_unitario = sc.nextDouble();
+            
+            System.out.println("Ingrese cantidad: ");
+            cantidad = sc.nextInt();
+            
+            precio_total = precio_unitario * cantidad;
+            
+
+            System.out.println("El precio total sin descuento es: " + precio_total);
+
+            if (precio_total >= 2000) {
+                descuento = precio_total - (precio_total * 5 /100);
+
+                System.out.println("El precio con descuento por gastar mas de 2000 es: " + descuento);
+            } else {
+                System.out.println("El precio total a pagar es: " + precio_total);
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Dato no valido, introduzca numeros");
+        } finally {
+            sc.close();
+        }
+    }
+}

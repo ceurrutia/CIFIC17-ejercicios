@@ -1,0 +1,58 @@
+EJERCICIO 4
+
+package inicioarrayscific;
+
+import javax.swing.JOptionPane;
+
+public class InicioArraysCific {
+
+    public static void main(String[] args) {
+
+        //ejercicio 4: Crear un programa que permita ingresar 5 estudiantes con su nota
+        //vectores para almacenar notas y estudiantes
+        
+        String[] nombres = new String[5];
+        double[] notas = new double[5];
+
+        for (int i = 0; i < 5; i++) {
+            nombres[i] = JOptionPane.showInputDialog(null, "Ingresa nombre: " + (i + 1) + ": ");
+            notas[i] = Float.parseFloat(JOptionPane.showInputDialog(null, "Ingresa nota: " + nombres[i]));
+        }
+
+        String mensaje = "******** Los estudiantes y sus notas *********** \n ";
+
+        for (int i = 0; i < 5; i++) {
+            mensaje += nombres[i] + " " + "\n" + "Nota: " + "\n " + notas[i] + "\n";
+
+        }
+        JOptionPane.showMessageDialog(null, mensaje);
+
+        //obtener la  nota mas alta y mas baja
+        double notaMaxima = notas[0];
+        double notaMinima = notas[0];
+        String nombreMaximo = nombres[0];
+        String nombreMinimo = nombres[0];
+
+        //La mas alta
+        for (int i = 1; i < notas.length; i++) {
+            if (notas[i] > notaMaxima) {
+                notaMaxima = notas[i];
+                nombreMaximo = nombres[i];
+            }
+        }
+
+        System.out.println("La nota maxima es: " + notaMaxima + "El estudiante es: " + nombreMaximo);
+
+        //La nota minima
+        for (int i = 1; i < notas.length; i++) {
+            if (notas[i] < notaMinima) {
+                notaMinima = notas[i];
+                nombreMinimo = nombres[i];
+            }
+        }
+
+        System.out.println("La nota minima es: " + notaMinima + " El estudiante es: " + nombreMinimo);
+
+    }
+
+}

@@ -1,0 +1,263 @@
+package com.mycompany.tienda;
+
+import java.util.ArrayList;
+
+public class Tienda {
+
+    public static void main(String[] args) {
+        ArrayList<Producto> listaProductos = new ArrayList<>();
+        
+        listaProductos.add(new Producto(1, "Celular", "Motorola A90", 560, 9));
+        listaProductos.add(new Producto(2, "Computadora", "Dell 4560", 990.67, 6));
+        
+        for (Producto prod : listaProductos){
+            System.out.println(prod);
+        }
+        
+        Cliente cliente1 = new Cliente(1, "Pdero", "Lopez", "Calle 34 8", "mail", "98765");
+       
+        System.out.println(cliente1);
+        Producto producto1 = new Producto(23, "Computadora", "Thinkpad", 890, 7);
+        Producto producto2 = new Producto(45, "Camara Computadora", "Asus", 50, 4);
+        Producto producto3 = new Producto(45, "mouse ", "Genius", 12, 35);
+        
+        listaProductos.add(producto1);
+        cliente1.agregarACarrito(producto1);
+        cliente1.agregarACarrito(producto2);
+        cliente1.agregarACarrito(producto3);
+
+        Carrito carrito1 = new Carrito();
+        carrito1.agregarProductos(producto1);
+        carrito1.agregarProductos(producto2);
+        carrito1.agregarProductos(producto3);
+        carrito1.hacerPedido();
+        
+        System.out.println("El mail del cliente es: " + cliente1.getMail());
+   
+        
+    }
+}
+
+//CLIENTE
+
+package com.mycompany.tienda;
+
+public class Cliente {
+    private int id;
+    private String nombre, apellido, direccion, mail, telefono;
+    private Carrito carrito;
+
+    public Cliente() {
+    }
+
+    public Cliente(int id, String nombre, String apellido, String direccion, String mail, String telefono ) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.direccion = direccion;
+        this.mail = mail;
+        this.telefono = telefono;
+        this.carrito = new Carrito();
+    }
+    
+    //metodos personalizados
+    
+    public void agregarACarrito(Producto producto){
+        carrito.agregarProductos(producto);
+    }
+    
+    
+    
+    //GEtters y setters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente: "+ 
+                "id: " + id +
+                ", nombre: " + nombre +
+                ", apellido: " + apellido +
+                ", direccion: " + direccion +
+                ", mail: " + mail +
+                ", telefono: " + telefono;
+    }
+    
+    
+    
+}
+
+//PRODUCTO
+
+package com.mycompany.tienda;
+
+public class Producto {
+
+    private int id;
+    private String nombre, descripcion;
+    private double precio;
+    private int stock;
+
+    public Producto() {
+    }
+
+    public Producto(int id, String nombre, String descripcion, double precio, int stock) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.stock = stock;
+
+    }
+
+    //GEtters y setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    @Override
+    public String toString() {
+        return "Id Producto: " + id
+                + " nombre: " + nombre
+                + " precio unitario: " + precio
+                + " stock disponible: " + stock;
+    }
+
+}
+
+//CARRITO
+
+package com.mycompany.tienda;
+
+import java.util.ArrayList;
+
+public class Carrito {
+
+    private int id;
+    ArrayList<Producto> productos;
+
+    public Carrito() {
+        this.productos = new ArrayList<>();
+
+    }
+
+    public Carrito(int id) {
+        this.id = id;
+        this.productos = new ArrayList<>();
+    }
+
+    //metodos propios
+    public void agregarProductos(Producto producto) {
+        if (producto.getStock() > 0) {
+            productos.add(producto);
+            producto.setStock(producto.getStock() - 1);
+            System.out.println("Producto agrgado a carrito exitosamente");
+
+        } else {
+            System.out.println("El producto no pudo ser agrgado al carrito");
+        }
+    }
+
+    public void hacerPedido() {
+        if (productos.isEmpty()) {
+            System.out.println("El carrito esta vacio");
+            return;
+        }
+
+        double precio_total = 0;
+
+        System.out.println("******Carrito*****");
+
+        for (Producto producto : productos) {
+            System.out.println(producto.getId() + " " + producto.getNombre() + " " + producto.getPrecio());
+            precio_total += producto.getPrecio();
+        }
+        
+        System.out.println("El total de su carrito es: " + precio_total);
+    }
+
+}
+
+

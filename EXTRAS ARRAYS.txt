@@ -1,0 +1,47 @@
+EXTRAS ARRAYS
+
+package extrasarrays;
+
+import java.util.Scanner;
+
+public class ExtrasArrays {
+
+    public static void main(String[] args) {
+        /*
+        Ingresar la altura de N personas (cantidad no fija)
+        y calcular la altura media, mostrar el nombre de la 
+        persona màs alta y el nombre de la persona màs baja. 
+         */
+        Scanner sc = new Scanner(System.in);
+
+        int longitud;
+
+        System.out.println("Ingrese la cantidad de alturas que quiera ingresar: ");
+        longitud = sc.nextInt();
+
+        double[] alturas = new double[longitud];
+
+        for (int i = 0; i < alturas.length; i++) {
+            System.out.println("Ingrese una altura para la posicion: " + i);
+            alturas[i] = sc.nextDouble();
+            System.out.println("La altura ingresada es: " + alturas[i]);
+        }
+
+        //media o promedio de alturas
+        double suma = 0;
+        double promedio = 0;
+
+        for (int i = 0; i < alturas.length; i++) {
+            suma = alturas[i] + suma;
+        }
+        
+        System.out.println("La suma de alturas es: " + suma);
+        
+        // sacar promedio
+
+        promedio = suma /alturas.length;
+        System.out.println("El promedio de alturas ingresadas es: " + promedio);
+
+    }
+
+}

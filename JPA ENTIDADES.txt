@@ -1,0 +1,106 @@
+JPA ENTIDADES
+
+/*
+JPA es un api de java que nos permite acceder a un ORM, mapear las clases
+nos ahorra todas las consultas sql, ya las hace desde la logica
+traduce el modelo de clases a un modelo relacional
+
+Se representan con @anotations
+Hibernate es un provedor de JPA, o EclipseLink, es la parte intermedia
+entre la base y a logica de la app haciendo mapeo o anotations.
+*/
+
+
+package com.mycompany.jpaprueba;
+
+public class JPAPrueba {
+
+    public static void main(String[] args) {
+       
+    }
+}
+
+ALUMNO CONTROLLERS
+
+package com.mycompany.jpaprueba;
+
+import java.io.Serializable;
+
+public class AlumnoJpaController implements Serializable {
+    
+}
+
+//ALUMNO CLASS
+
+package com.mycompany.jpaprueba;
+
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+public class Alumno implements Serializable {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    
+    @Basic
+    private String nombre;
+    private String apellido;
+    
+    @Temporal(TemporalType.DATE)
+    private Date fechaNac;
+
+    public Alumno() {
+    }
+
+    public Alumno(int id, String nombre, String apellido, Date fechaNac) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNac = fechaNac;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public Date getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(Date fechaNac) {
+        this.fechaNac = fechaNac;
+    }
+
+    
+    
+}
+
