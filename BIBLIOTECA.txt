@@ -309,13 +309,13 @@ import java.time.LocalDateTime;
 public class Prestamo {
 
     private int id;
-    private LocalDateTime fecha_prestamo;
-    private LocalDateTime fecha_devolucion;
+    private LocalDate fecha_prestamo;
+    private LocalDate fecha_devolucion;
 
     public Prestamo() {
     }
 
-    public Prestamo(int id, LocalDateTime fecha_prestamo, LocalDateTime fecha_devolucion) {
+    public Prestamo(int id, LocalDate fecha_prestamo, LocalDate fecha_devolucion) {
         this.id = id;
         this.fecha_prestamo = fecha_prestamo;
         this.fecha_devolucion = fecha_devolucion;
@@ -324,17 +324,30 @@ public class Prestamo {
 
     //metodos propios
     public void realizarPrestamo(Libro libro) {
-        System.out.println("El libro: " + libro.getId() + " " + libro.getTitulo() + " ha sido prestado " +
-                " el dia: " + fecha_prestamo);
+        this.fecha_prestamo = LocalDate.now();
+        
+        if (libro.getCant_ejemplares()> 0){
+            libro.setCant_ejemplares(libro.getCant_ejemplares()-1);
+            System.out.println("El libro: " + libro.getId() + " - " + libro.getTitulo() + " ha sido prestado " +
+                    "el dia: " + fecha_prestamo);
+            System.out.println("Quedan " + libro.getCant_ejemplares() + " ejemplares disponibles.");
+        } else {
+            System.out.println("No hay ejemplares disponibles");
+        }
     }
 
-    public void restarUnEjemplar(Libro libro) {
-        libro.setCant_ejemplares(libro.getCant_ejemplares() - 1);
-    }
 
     public void realizarDevolucion(Libro libro) {
-        System.out.println("El libro: " + libro.getId() + " " + libro.getTitulo() + " ha sido devuelto " +
-                " en la fecha: " + fecha_devolucion);
+        this.fecha_devolucion = LocalDate.now().plusDays(30);
+        
+        if (libro.getCant_ejemplares()> 0){
+            libro.setCant_ejemplares(libro.getCant_ejemplares()+1);
+            System.out.println("El libro: " + libro.getId() + " - " + libro.getTitulo() + " ha sido devuelto " +
+                    "el dia: " + fecha_devolucion);
+            System.out.println("Quedan " + libro.getCant_ejemplares() + " ejemplares disponibles.");
+        } else {
+            System.out.println("Ahota hay " + libro.getCant_ejemplares() + " ejemplares disponibles ");
+        }
     }
 
     public void agregarUnEjemplar(Libro libro) {
@@ -349,22 +362,21 @@ public class Prestamo {
         this.id = id;
     }
 
-    public LocalDateTime getFecha_prestamo() {
+    public LocalDate getFecha_prestamo() {
         return fecha_prestamo;
     }
 
-    public void setFecha_prestamo(LocalDateTime fecha_prestamo) {
+    public void setFecha_prestamo(LocalDate fecha_prestamo) {
         this.fecha_prestamo = fecha_prestamo;
     }
 
-    public LocalDateTime getFecha_devolucion() {
+    public LocalDate getFecha_devolucion() {
         return fecha_devolucion;
     }
 
-    public void setFecha_devolucion(LocalDateTime fecha_devolucion) {
+    public void setFecha_devolucion(LocalDate fecha_devolucion) {
         this.fecha_devolucion = fecha_devolucion;
     }
-
     
 }
 
